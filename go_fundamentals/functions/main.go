@@ -1,6 +1,11 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"os"
+)
+
+var user = os.Getenv("USER")
 
 func max(a, b int) int {
 	if a > b {
@@ -11,6 +16,12 @@ func max(a, b int) int {
 
 func SumAndProduct(A, B int) (int, int) {
 	return A + B, A * B
+}
+
+func init() {
+	if user == "" {
+		panic("no value for $USER")
+	}
 }
 
 func main() {
@@ -32,4 +43,8 @@ func main() {
 
 	fmt.Printf("%d + %d = %d\n", a, b, xPLUSy)
 	fmt.Printf("%d * %d = %d\n", a, b, xTIMESy)
+
+	for i := 0; i < 5; i++ {
+		defer fmt.Printf("%d ", i)
+	}
 }
