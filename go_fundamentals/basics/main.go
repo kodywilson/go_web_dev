@@ -39,4 +39,25 @@ func main() {
 	// two dimensional array
 	easyArray := [2][4]int{{1, 2, 3, 4}, {5, 6, 7, 8}}
 	fmt.Println(easyArray)
+
+	// maps
+	numbers := make(map[string]int)
+	numbers["one"] = 1
+	numbers["ten"] = 10
+	numbers["three"] = 3
+
+	fmt.Println("The third number is: ", numbers["three"])
+	fmt.Println("The length of this map is ", len(numbers))
+	numbers["one"] = 100
+	fmt.Println("Now one is ", numbers["one"])
+
+	delete(numbers, "three")
+	fmt.Println("The length of this map is now", len(numbers))
+
+	m1 := make(map[string]string)
+	m1["Hello"] = "Bonjour"
+	fmt.Println("Hello is", m1["Hello"])
+	m2 := m1
+	m2["Hello"] = "Salut"
+	fmt.Println("Hello is", m1["Hello"])
 }
