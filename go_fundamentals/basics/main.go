@@ -59,5 +59,19 @@ func main() {
 	fmt.Println("Hello is", m1["Hello"])
 	m2 := m1
 	m2["Hello"] = "Salut"
-	fmt.Println("Hello is", m1["Hello"])
+	fmt.Println("Now, hello is", m1["Hello"])
+
+	x := 5
+	if x > 10 {
+		fmt.Println("x is greater than 10")
+	} else {
+		fmt.Println("x is less than or equal to 10")
+	}
+
+	sum := 0
+	for index := 0; index < 10; index++ {
+		sum += index
+	}
+	fmt.Println("sum is equal to ", sum)
+
 }
