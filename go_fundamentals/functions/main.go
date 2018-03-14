@@ -9,6 +9,10 @@ func max(a, b int) int {
 	return b
 }
 
+func SumAndProduct(A, B int) (int, int) {
+	return A + B, A * B
+}
+
 func main() {
 	x := 3
 	y := 4
@@ -20,4 +24,12 @@ func main() {
 	fmt.Printf("max(%d, %d) = %d\n", x, y, maxxy)
 	fmt.Printf("max(%d, %d) = %d\n", x, z, maxxz)
 	fmt.Printf("max(%d, %d) = %d\n", y, z, max(y, z))
+
+	a := 3
+	b := 4
+
+	xPLUSy, xTIMESy := SumAndProduct(a, b)
+
+	fmt.Printf("%d + %d = %d\n", a, b, xPLUSy)
+	fmt.Printf("%d * %d = %d\n", a, b, xTIMESy)
 }
