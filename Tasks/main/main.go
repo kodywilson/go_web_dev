@@ -8,7 +8,7 @@ import (
 func main() {
 	http.HandleFunc("/", ShowAllTasksFunc)
 	http.HandleFunc("/add/", AddTaskFunc)
-	// http.HandleFunc("/add_user", PostAddUser)
+	http.HandleFunc("/add_user", PostAddUser)
 	// http.HandleFunc("/admin", HandleAdmin)
 	// http.HandleFunc("/change", PostChange)
 	// http.HandleFunc("/complete/", CompleteTaskFunc)
@@ -29,7 +29,18 @@ func main() {
 	log.Fatal(http.ListenAndServe(":8080", nil))
 }
 
-// AddTaskFunc show all tasks
+// ShowAllTasksFunc show all tasks
+func ShowAllTasksFunc(w http.ResponseWriter, r *http.Request) {
+	var message string
+	if r.Method == "GET" {
+		message = "all pending tasks GET"
+	} else {
+		message = "all pending tasks POST"
+	}
+	w.Write([]byte(message))
+}
+
+// AddTaskFunc add new task
 func AddTaskFunc(w http.ResponseWriter, r *http.Request) {
 	var message string
 	if r.Method == "GET" {
@@ -40,13 +51,13 @@ func AddTaskFunc(w http.ResponseWriter, r *http.Request) {
 	w.Write([]byte(message))
 }
 
-// ShowAllTasksFunc show all tasks
-func ShowAllTasksFunc(w http.ResponseWriter, r *http.Request) {
+// PostAddUser add new user
+func PostAddUser(w http.ResponseWriter, r *http.Request) {
 	var message string
-	if r.Method == "GET" {
-		message = "all pending tasks GET"
+	if r.Method == "POST" {
+		message = "add a new user POST"
 	} else {
-		message = "all pending tasks POST"
+		message = "only POST works"
 	}
 	w.Write([]byte(message))
 }
