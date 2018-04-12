@@ -6,10 +6,10 @@ import (
 )
 
 func main() {
-	http.HandleFunc("/", ShowAllTasksFunc)
 	http.HandleFunc("/add/", AddTaskFunc)
 	http.HandleFunc("/add_user", PostAddUser)
-	// http.HandleFunc("/admin", HandleAdmin)
+	http.HandleFunc("/admin", HandleAdmin)
+	http.HandleFunc("/", ShowAllTasksFunc)
 	// http.HandleFunc("/change", PostChange)
 	// http.HandleFunc("/complete/", CompleteTaskFunc)
 	// http.HandleFunc("/completed/", ShowCompleteTasksFunc)
@@ -58,6 +58,17 @@ func PostAddUser(w http.ResponseWriter, r *http.Request) {
 		message = "add a new user POST"
 	} else {
 		message = "only POST works"
+	}
+	w.Write([]byte(message))
+}
+
+// HandleAdmin handle admins
+func HandleAdmin(w http.ResponseWriter, r *http.Request) {
+	var message string
+	if r.Method == "POST" {
+		message = "add a new admin POST"
+	} else {
+		message = "list admins GET"
 	}
 	w.Write([]byte(message))
 }
